@@ -1,0 +1,19 @@
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/StockManegmentApp?createDatabaseIfNotExist=true&createTablesIfNotExist=true&userSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: "02011213"
+    driver-class-name: com.mysql.jdbc.Driver
+  ## Specify DBMS
+  jpa:
+    database: MYSQL
+    show-sql: true
+
+
+
+    # Hibernate DDL Auto (create, create-drop, update)
+    hibernate:
+      ddl-auto: update
+      dialect: org.hibernate.dialect.MySQL5Dialect
+
+
