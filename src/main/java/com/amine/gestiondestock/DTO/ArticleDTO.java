@@ -12,7 +12,6 @@ import lombok.Data;
 
 @Builder
 @Data
-@EntityScan(basePackages="com.GTE.Gestion_Stock.model") 
 public class ArticleDTO {
 
 	
