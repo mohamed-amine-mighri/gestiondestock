@@ -6,6 +6,7 @@ import com.amine.gestiondestock.DTO.ArticleDTO;
 import com.amine.gestiondestock.DTO.LigneCommandeClientDTO;
 import com.amine.gestiondestock.DTO.LigneCommandeFournisseurDTO;
 
+
 public interface ArticleServ {
 
 	ArticleDTO save(ArticleDTO dto);

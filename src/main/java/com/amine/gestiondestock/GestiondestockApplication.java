@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.amine.gestiondestock.services")
+@ComponentScan({"com.amine.gestiondestock.services", "com.amine.gestiondestock.repos","com.amine.gestiondestock.services.servicImplimentation"})
 public class GestiondestockApplication {
 
 	public static void main(String[] args) {

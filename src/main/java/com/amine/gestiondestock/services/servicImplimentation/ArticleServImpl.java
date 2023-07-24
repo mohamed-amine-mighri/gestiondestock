@@ -24,6 +24,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @Slf4j
+
 public abstract class ArticleServImpl implements ArticleServ {
 	  
 	private ArticleRepos articleRep;
