@@ -25,11 +25,11 @@ public class MouvementStockServImpl implements MouvementStockServ {
 	  private MvtStkRepos repository;
 	  private ArticleServ articleServ;
 
-	  @Autowired
-	  public MouvementStockServImpl(MvtStkRepos repository, ArticleServ articleService) {
-	    this.repository = repository;
-	    this.articleServ = articleService;
-	  }
+//	  @Autowired
+//	  public MouvementStockServImpl(MvtStkRepos repository, ArticleServ articleService) {
+//	    this.repository = repository;
+//	    this.articleServ = articleService;
+//	  }
 
 	  @Override
 	  public BigDecimal stockReelArticle(Integer idArticle) {

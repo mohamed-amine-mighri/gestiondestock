@@ -3,16 +3,25 @@ package com.amine.gestiondestock.controller.API;
 import com.amine.gestiondestock.DTO.ArticleDTO;
 import com.amine.gestiondestock.DTO.LigneCommandeClientDTO;
 import com.amine.gestiondestock.DTO.LigneCommandeFournisseurDTO;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 import static com.amine.gestiondestock.utils.Constants.APP_ROOT;
-
+@Api(APP_ROOT + "articles")
 public interface ArticleApi {
 
     @PostMapping(value =  APP_ROOT + "/articles/create", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ApiOperation(value = "Enregistrer un article", notes = "Cette methode permet d'enregistrer ou modifier un article", response = ArticleDTO.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "L'objet article cree / modifie"),
+            @ApiResponse(code = 400, message = "L'objet article n'est pas valide")
+    })
     ArticleDTO save(@RequestBody ArticleDTO dto);
 
     @GetMapping(value = APP_ROOT + "/articles/{idArticle}", produces = MediaType.APPLICATION_JSON_VALUE)
