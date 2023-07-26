@@ -15,12 +15,7 @@ import java.math.BigDecimal;
 //@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name="lignedecommandeclient")
-public class LigneCommandeClient {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
+public class LigneCommandeClient extends AbstractEntity{
 
     @Column(name ="idClient")
     private Integer idClient;

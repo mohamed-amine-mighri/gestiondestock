@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -13,12 +14,7 @@ import lombok.NoArgsConstructor;
 //@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name="role")
-public class Roles {
-
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class Roles extends AbstractEntity{
 
 
     @Column(name="roleName")

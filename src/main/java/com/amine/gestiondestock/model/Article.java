@@ -15,11 +15,9 @@ import java.util.List;
 @Data
 @Entity
 @Table(name="article")
-public class Article {
+public class Article extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+
     @Column(name ="codeArticle")
     private String codeArticle;
     @Column(name ="nom")

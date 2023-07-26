@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.time.Instant;
 import java.util.List;
 
@@ -14,11 +15,9 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name="commandeClient")
-public class CommandeClient {
+public class CommandeClient extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+
     @Column(name ="codeCommande")
     private String codeCommande;
     @Column(name ="date")

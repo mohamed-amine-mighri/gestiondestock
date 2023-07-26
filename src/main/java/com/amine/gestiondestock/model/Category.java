@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.util.List;
 
 @Data
@@ -15,11 +16,7 @@ import java.util.List;
 //@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name = "category")
-public class Category {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+public class Category extends AbstractEntity{
 
     /* we have to mappBy cathegory the list of articles using OneToMany tag */
     @OneToMany(mappedBy="category")

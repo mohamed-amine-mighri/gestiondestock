@@ -16,11 +16,9 @@ import java.util.List;
 //@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name="commandeFournisseur")
-public class CommandeFournisseur {
+public class CommandeFournisseur extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+
     @Column(name ="codeCommande")
     private String codeCommande;
     @Column(name ="date")

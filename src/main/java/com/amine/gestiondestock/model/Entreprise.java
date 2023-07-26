@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import java.util.List;
 
 @Data
@@ -15,11 +16,9 @@ import java.util.List;
 //@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name="entreprise")
-public class Entreprise {
+public class Entreprise extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+
     @Column(name ="nom")
     private String nom;
     @Column(name ="description")

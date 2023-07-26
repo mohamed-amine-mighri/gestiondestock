@@ -15,11 +15,9 @@ import java.util.List;
 //@EqualsAndHashCode(callSuper = true)
 @Entity
 @Table(name="client")
-public class Client {
+public class Client extends AbstractEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+
     @Column(name ="nom")
     private String nom;
     @Column(name ="prenom")

@@ -38,4 +38,5 @@ public class CategoryController implements CategoryApi {
   public void delete(Integer id) {
     categoryService.delete(id);
   }
+
 }
