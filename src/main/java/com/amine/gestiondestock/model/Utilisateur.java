@@ -1,9 +1,12 @@
 package com.amine.gestiondestock.model;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
+import java.time.Instant;
 import java.util.List;
 
 @Data
@@ -16,24 +19,33 @@ import java.util.List;
 public class Utilisateur extends AbstractEntity{
 
 
-
-    @Column(name ="nom")
+    @Column(name = "nom")
     private String nom;
-    @Column(name ="prenom")
+
+    @Column(name = "prenom")
     private String prenom;
-    @Column(name ="photo")
-    private String photo;
-    @Column(name ="email")
+
+    @Column(name = "email")
     private String email;
-    @Column(name ="adresse")
-    private String adresse;
-    @Column(name ="moteDePasse")
+
+    @Column(name = "datedenaissance")
+    private Instant dateDeNaissance;
+
+    @Column(name = "motdepasse")
     private String moteDePasse;
 
+    @Embedded
+    private Adresse adresse;
+
+    @Column(name = "photo")
+    private String photo;
+
     @ManyToOne
-    @JoinColumn(name ="idEntreprise")
+    @JoinColumn(name = "identreprise")
     private Entreprise entreprise;
 
+
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "utilisateur")
-    private List<Roles> role;
+    @JsonIgnore
+    private List<Roles> roles;
 }

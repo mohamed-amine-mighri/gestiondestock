@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 
 import com.amine.gestiondestock.model.AbstractEntity;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -36,5 +36,4 @@ public class LigneVente extends AbstractEntity {
 
   @Column(name = "identreprise")
   private Integer idEntreprise;
-
 }

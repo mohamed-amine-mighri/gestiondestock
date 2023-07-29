@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface LigneCommandeFournisseurRepos extends JpaRepository<LigneCommandeFournisseur, Integer> {
 
-    List<LigneCommandeFournisseur> findAllByCommandeFournisseurId(Integer id);
+    List<LigneCommandeFournisseur> findAllByCommandeFournisseurId(Integer idCommande);
 
-    List<LigneCommandeFournisseur> findAllByArticleId(Integer id);
+    List<LigneCommandeFournisseur> findAllByArticleId(Integer idCommande);
 }

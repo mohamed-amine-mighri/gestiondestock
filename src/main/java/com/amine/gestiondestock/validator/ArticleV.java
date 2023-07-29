@@ -24,10 +24,10 @@ public class ArticleV {
 	    if (!StringUtils.hasLength(articleDTO.getCodeArticle())) {
 	        errors.add("Veuillez renseigner le code de l'article");
 	      }
-	    if (!StringUtils.hasLength(articleDTO.getNom())) {
+	    if (!StringUtils.hasLength(articleDTO.getDesignation())) {
 	        errors.add("Veuillez renseigner la designation de l'article");
 	      }
-	    if ((articleDTO.getPrix())==null) {
+	    if ((articleDTO.getPrixUnitaireHt())==null) {
 	        errors.add("Veuillez renseigner le prix unitaire de l'article");
 	      }
 	    if (articleDTO.getCategory() == null || articleDTO.getCategory().getId() == null) {

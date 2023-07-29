@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,23 +16,27 @@ import java.util.List;
 @Entity
 @Table(name="client")
 public class Client extends AbstractEntity{
-
-
-    @Column(name ="nom")
+    @Column(name = "nom")
     private String nom;
-    @Column(name ="prenom")
+
+    @Column(name = "prenom")
     private String prenom;
-    @Column(name ="photo")
+
+    @Embedded
+    private Adresse adresse;
+
+    @Column(name = "photo")
     private String photo;
-    @Column(name ="email")
-    private String email;
-    @Column(name ="adresse")
-    private String adresse;
-    @Column(name ="numtelephone")
-    private String numTelephone;
-    @Column(name = "idEntreprise")
+
+    @Column(name = "mail")
+    private String mail;
+
+    @Column(name = "numTel")
+    private String numTel;
+
+    @Column(name = "identreprise")
     private Integer idEntreprise;
 
-    @OneToMany(mappedBy ="client")
-    private List<CommandeClient> commandeClient;
+    @OneToMany(mappedBy = "client")
+    private List<CommandeClient> commandeClients;
 }

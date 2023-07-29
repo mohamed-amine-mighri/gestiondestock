@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import com.amine.gestiondestock.model.Fournisseur;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,55 +13,56 @@ import lombok.Data;
 @Data
 public class FournisseurDTO {
 
-	 private Integer id;
+	private Integer id;
 
-	  private String nom;
+	private String nom;
 
-	  private String prenom;
+	private String prenom;
 
-	  private String adresse;
+	private AdresseDto adresse;
 
-	  private String photo;
+	private String photo;
 
-	  private String email;
+	private String mail;
 
-	  private String numtelephone;
+	private String numTel;
 
-	  private Integer idEntreprise;
+	private Integer idEntreprise;
 
-	  private List<CommandeFournisseurDTO> commandeFournisseurs;
-	  
-	  public static FournisseurDTO fromEntity(Fournisseur fournisseur) {
-		    if (fournisseur == null) {
-		      return null;
-		    }
-		    return FournisseurDTO.builder()
-		        .id(fournisseur.getId())
-		        .nom(fournisseur.getNom())
-		        .prenom(fournisseur.getPrenom())
-		        .adresse(fournisseur.getAdresse())
-		        .photo(fournisseur.getPhoto())
-		        .email(fournisseur.getEmail())
-		        .numtelephone(fournisseur.getNumTelephone())
-		        .idEntreprise(fournisseur.getIdEntreprise())
-		        .build();
-		  }
+	@JsonIgnore
+	private List<CommandeFournisseurDTO> commandeFournisseurs;
 
-		  public static Fournisseur toEntity(FournisseurDTO fournissurDTO) {
-		    if (fournissurDTO == null) {
-		      return null;
-		    }
-		    Fournisseur fournisseur = new Fournisseur();
-		    fournisseur.setId(fournissurDTO.getId());
-		    fournisseur.setNom(fournissurDTO.getNom());
-		    fournisseur.setPrenom(fournissurDTO.getPrenom());
-		    fournisseur.setAdresse(fournissurDTO.getAdresse());
-		    fournisseur.setPhoto(fournissurDTO.getPhoto());
-		    fournisseur.setEmail(fournissurDTO.getEmail());
-		    fournisseur.setNumTelephone(fournissurDTO.getNumtelephone());
-		    fournisseur.setIdEntreprise(fournissurDTO.getIdEntreprise());
+	public static FournisseurDTO fromEntity(Fournisseur fournisseur) {
+		if (fournisseur == null) {
+			return null;
+		}
+		return FournisseurDTO.builder()
+				.id(fournisseur.getId())
+				.nom(fournisseur.getNom())
+				.prenom(fournisseur.getPrenom())
+				.adresse(AdresseDto.fromEntity(fournisseur.getAdresse()))
+				.photo(fournisseur.getPhoto())
+				.mail(fournisseur.getMail())
+				.numTel(fournisseur.getNumTel())
+				.idEntreprise(fournisseur.getIdEntreprise())
+				.build();
+	}
 
-		    return fournisseur;
-		  }
+	public static Fournisseur toEntity(FournisseurDTO dto) {
+		if (dto == null) {
+			return null;
+		}
+		Fournisseur fournisseur = new Fournisseur();
+		fournisseur.setId(dto.getId());
+		fournisseur.setNom(dto.getNom());
+		fournisseur.setPrenom(dto.getPrenom());
+		fournisseur.setAdresse(AdresseDto.toEntity(dto.getAdresse()));
+		fournisseur.setPhoto(dto.getPhoto());
+		fournisseur.setMail(dto.getMail());
+		fournisseur.setNumTel(dto.getNumTel());
+		fournisseur.setIdEntreprise(dto.getIdEntreprise());
+
+		return fournisseur;
+	}
 	
 }

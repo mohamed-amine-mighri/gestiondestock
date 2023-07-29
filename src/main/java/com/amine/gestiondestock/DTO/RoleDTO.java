@@ -3,6 +3,7 @@ package com.amine.gestiondestock.DTO;
 import java.math.BigDecimal;
 
 import com.amine.gestiondestock.model.Roles;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 
@@ -10,30 +11,32 @@ import lombok.Data;
 @Data
 public class RoleDTO {
 
-	  private Integer id;
+	private Integer id;
 
-	  private String roleName;
-      
-	  private UtilisateurDTO utilisateur;
+	private String roleName;
 
-	  public static RoleDTO fromEntity(Roles role) {
-		    if (role == null) {
-		      return null;
-		    }
-		    return RoleDTO.builder()
-		        .id(role.getId())
-		        .roleName(role.getRoleName())
-		        .build();
-		  }
+	@JsonIgnore
+	private UtilisateurDTO utilisateur;
 
-		  public static Roles toEntity(RoleDTO roleDTO) {
-		    if (roleDTO == null) {
-		      return null;
-		    }
-		    Roles role = new Roles();
-		    role.setId(roleDTO.getId());
-		    role.setRoleName(roleDTO.getRoleName());
-		    role.setUtilisateur(UtilisateurDTO.toEntity(roleDTO.getUtilisateur()));
-		    return role;
-		  }
+	public static RoleDTO fromEntity(Roles roles) {
+		if (roles == null) {
+			return null;
+		}
+		return RoleDTO.builder()
+				.id(roles.getId())
+				.roleName("ADMIN")
+				.build();
+	}
+
+	public static Roles toEntity(RoleDTO dto) {
+		if (dto == null) {
+			return null;
+		}
+		Roles roles = new Roles();
+		roles.setId(dto.getId());
+		roles.setRoleName(dto.getRoleName());
+		roles.setUtilisateur(UtilisateurDTO.toEntity(dto.getUtilisateur()));
+		return roles;
+	}
+
 }

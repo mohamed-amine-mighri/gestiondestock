@@ -9,34 +9,32 @@ import org.springframework.util.StringUtils;
 
 public class ClientV {
 
-	  public static List<String> validate(ClientDTO clientDTO) {
-		    List<String> errors = new ArrayList<>();
+	public static List<String> validate(ClientDTO dto) {
+		List<String> errors = new ArrayList<>();
 
-		    if (clientDTO == null) {
-		      errors.add("Veuillez renseigner le nom du client");
-		      errors.add("Veuillez renseigner le prenom du client");
-		      errors.add("Veuillez renseigner le Mail du client");
-		      errors.add("Veuillez renseigner le numero de telephone du client");
-		      errors.add("Veuillez renseigner l'adresse du client");
-		      return errors;
-		    }
+		if (dto == null) {
+			errors.add("Veuillez renseigner le nom du client");
+			errors.add("Veuillez renseigner le prenom du client");
+			errors.add("Veuillez renseigner le Mail du client");
+			errors.add("Veuillez renseigner le numero de telephone du client");
+			errors.addAll(AdresseValidator.validate(null));
+			return errors;
+		}
 
-		    if (!StringUtils.hasLength(clientDTO.getNom())) {
-		      errors.add("Veuillez renseigner le nom du client");
-		    }
-		    if (!StringUtils.hasLength(clientDTO.getPrenom())) {
-		      errors.add("Veuillez renseigner le prenom du client");
-		    }
-		    if (!StringUtils.hasLength(clientDTO.getEmail())) {
-		      errors.add("Veuillez renseigner le Mail du client");
-		    }
-		    if (!StringUtils.hasLength(clientDTO.getNumtelephone())) {
-		      errors.add("Veuillez renseigner le numero de telephone du client");
-		    }
-		    if (!StringUtils.hasLength(clientDTO.getAdresse())) {
-			  errors.add("Veuillez renseigner l'adresse du client");
-			}
-		    return errors;
-		  } 
+		if (!StringUtils.hasLength(dto.getNom())) {
+			errors.add("Veuillez renseigner le nom du client");
+		}
+		if (!StringUtils.hasLength(dto.getPrenom())) {
+			errors.add("Veuillez renseigner le prenom du client");
+		}
+		if (!StringUtils.hasLength(dto.getMail())) {
+			errors.add("Veuillez renseigner le Mail du client");
+		}
+		if (!StringUtils.hasLength(dto.getNumTel())) {
+			errors.add("Veuillez renseigner le numero de telephone du client");
+		}
+		errors.addAll(AdresseValidator.validate(dto.getAdresse()));
+		return errors;
+	}
 	
 }

@@ -11,8 +11,6 @@ public interface ArticleRepos extends JpaRepository<Article, Integer> {
 
     Optional<Article> findArticleByCodeArticle(String codeArticle);
 
-    List<Article> findAllById(Integer idCategory);
-
-    //Optional<Article> findByIdEntreprise(Entreprise id);
+    List<Article> findAllByCategoryId(Integer idCategory);
 
 }

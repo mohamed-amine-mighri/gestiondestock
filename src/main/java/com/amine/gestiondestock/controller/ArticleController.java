@@ -5,6 +5,7 @@ import com.amine.gestiondestock.DTO.LigneCommandeClientDTO;
 import com.amine.gestiondestock.DTO.LigneCommandeFournisseurDTO;
 import com.amine.gestiondestock.DTO.LigneVenteDTO;
 import com.amine.gestiondestock.controller.API.ArticleApi;
+import com.amine.gestiondestock.services.ArticleServ;
 import com.amine.gestiondestock.services.servicImplimentation.ArticleServiceImpl;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.Operation;
@@ -26,11 +27,11 @@ import java.util.List;
 
 public class ArticleController implements ArticleApi {
 
-    private ArticleServiceImpl articleService;
+    private ArticleServ articleService;
 
     @Autowired
     public ArticleController(
-            ArticleServiceImpl articleService
+            ArticleServ articleService
     ) {
         this.articleService = articleService;
     }
@@ -56,20 +57,6 @@ public class ArticleController implements ArticleApi {
         return articleService.findAll();
     }
 
-    @Override
-    public List<LigneVenteDTO> findHistoriqueVentes(Integer idArticle) {
-        return articleService.findHistoriqueVentes(idArticle);
-    }
-
-    @Override
-    public List<LigneCommandeClientDTO> findHistoriaueCommandeClient(Integer idArticle) {
-        return articleService.findHistoriaueCommandeClient(idArticle);
-    }
-
-    @Override
-    public List<LigneCommandeFournisseurDTO> findHistoriqueCommandeFournisseur(Integer idArticle) {
-        return articleService.findHistoriqueCommandeFournisseur(idArticle);
-    }
 
     @Override
     public List<ArticleDTO> findAllArticleByIdCategory(Integer idCategory) {

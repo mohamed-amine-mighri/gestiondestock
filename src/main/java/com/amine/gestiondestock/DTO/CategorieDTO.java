@@ -8,7 +8,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 
-//@Getter
+@Getter
 @Builder
 @Data
 public class CategorieDTO {
@@ -28,8 +28,8 @@ public class CategorieDTO {
 		    }
 		    return CategorieDTO.builder()
 		        .id(categorie.getId())
-		        .codeCategorie(categorie.getCodeCategorie())
-		        .nom(categorie.getNom())
+		        .codeCategorie(categorie.getCode())
+		        .nom(categorie.getDesignation())
 		        .idEntreprise(categorie.getIdEntreprise())
 		        .build();
 		  }
@@ -42,8 +42,8 @@ public class CategorieDTO {
 	    }
 	    Category categorie = new Category();
 	    categorie.setId(categorieDto.getId());
-	    categorie.setCodeCategorie(categorieDto.getCodeCategorie());
-	    categorie.setNom(categorieDto.getNom());
+	    categorie.setCode(categorieDto.getCodeCategorie());
+	    categorie.setDesignation(categorieDto.getNom());
 	    categorie.setIdEntreprise(categorieDto.getIdEntreprise());
 	    
 	    return categorie;

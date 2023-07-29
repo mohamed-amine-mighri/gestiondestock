@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,26 +17,33 @@ import java.util.List;
 @Table(name="article")
 public class Article extends AbstractEntity{
 
-
-    @Column(name ="codeArticle")
+    @Column(name = "codearticle")
     private String codeArticle;
-    @Column(name ="nom")
-    private String nom;
-    @Column(name ="prix")
-    private BigDecimal prix;
-    @Column(name ="photo")
+
+    @Column(name = "designation")
+    private String designation;
+
+    @Column(name = "prixunitaireht")
+    private BigDecimal prixUnitaireHt;
+
+    @Column(name = "tauxtva")
+    private BigDecimal tauxTva;
+
+    @Column(name = "prixunitairettc")
+    private BigDecimal prixUnitaireTtc;
+
+    @Column(name = "photo")
     private String photo;
 
-    // we must add the entreprise in here using the joinColumn(mappedBy)//
-    @OneToOne
-    @JoinColumn(name = "idEntreprise")
-    private Entreprise entreprise;
-
-
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
 
     @ManyToOne
     @JoinColumn(name = "idcategory")
     private Category category;
+
+    @OneToMany(mappedBy = "article")
+    private List<LigneVente> ligneVentes;
 
     @OneToMany(mappedBy = "article")
     private List<LigneCommandeClient> ligneCommandeClients;
@@ -46,5 +53,6 @@ public class Article extends AbstractEntity{
 
     @OneToMany(mappedBy = "article")
     private List<MvtStk> mvtStks;
+
 
 }

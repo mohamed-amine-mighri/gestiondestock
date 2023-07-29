@@ -9,35 +9,34 @@ import org.springframework.util.StringUtils;
 
 public class FournisseurV {
 
-	  public static List<String> validate(FournisseurDTO fournisseurDTO) {
-		    List<String> errors = new ArrayList<>();
 
-		    if (fournisseurDTO == null) {
-		      errors.add("Veuillez renseigner le nom du fournisseur");
-		      errors.add("Veuillez renseigner le prenom du fournisseur");
-		      errors.add("Veuillez renseigner le Mail du fournisseur");
-		      errors.add("Veuillez renseigner le numero de telephone du fournisseur");
-		      errors.add("Veuillez renseigner l'adresse de fournisseur");
-		      return errors;
-		    }
+	public static List<String> validate(FournisseurDTO dto) {
+		List<String> errors = new ArrayList<>();
 
-		    if (!StringUtils.hasLength(fournisseurDTO.getNom())) {
-		      errors.add("Veuillez renseigner le nom du fournisseur");
-		    }
-		    if (!StringUtils.hasLength(fournisseurDTO.getPrenom())) {
-		      errors.add("Veuillez renseigner le prenom du fournisseur");
-		    }
-		    if (!StringUtils.hasLength(fournisseurDTO.getEmail())) {
-		      errors.add("Veuillez renseigner le Mail du fournisseur");
-		    }
-		    if (!StringUtils.hasLength(fournisseurDTO.getNumtelephone())) {
-		      errors.add("Veuillez renseigner le numero de telephone du fournisseur");
-		    }
-		    if (!StringUtils.hasLength(fournisseurDTO.getAdresse())) {
-			  errors.add("Veuillez renseigner l'adresse de fournisseur");
-			}
-		   return errors;
-		  }
+		if (dto == null) {
+			errors.add("Veuillez renseigner le nom du fournisseur");
+			errors.add("Veuillez renseigner le prenom du fournisseur");
+			errors.add("Veuillez renseigner le Mail du fournisseur");
+			errors.add("Veuillez renseigner le numero de telephone du fournisseur");
+			errors.addAll(AdresseValidator.validate(null));
+			return errors;
+		}
+
+		if (!StringUtils.hasLength(dto.getNom())) {
+			errors.add("Veuillez renseigner le nom du fournisseur");
+		}
+		if (!StringUtils.hasLength(dto.getPrenom())) {
+			errors.add("Veuillez renseigner le prenom du fournisseur");
+		}
+		if (!StringUtils.hasLength(dto.getMail())) {
+			errors.add("Veuillez renseigner le Mail du fournisseur");
+		}
+		if (!StringUtils.hasLength(dto.getNumTel())) {
+			errors.add("Veuillez renseigner le numero de telephone du fournisseur");
+		}
+		errors.addAll(AdresseValidator.validate(dto.getAdresse()));
+		return errors;
+	}
 
 	
 }

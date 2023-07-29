@@ -17,7 +17,7 @@ public class UtilisateurV {
 		      errors.add("Veuillez renseigner le prenom d'utilisateur");
 		      errors.add("Veuillez renseigner le mot de passe d'utilisateur");
 		      errors.add("Veuillez renseigner l'adresse d'utilisateur");
-		      //errors.add("Veuillez renseigner l'adresse d'utilisateur");
+		      errors.add("Veuillez renseigner l'adresse d'utilisateur");
 		      errors.add("Veuillez renseigner l'adresse email d'utilisateur");
 
 		      return errors;
@@ -35,14 +35,9 @@ public class UtilisateurV {
 		    if (!StringUtils.hasLength(utilisateurDTO.getMoteDePasse())) {
 		      errors.add("Veuillez renseigner le mot de passe d'utilisateur");
 		    }
-		    if (!StringUtils.hasLength(utilisateurDTO.getAdresse())) {
-			  errors.add("Veuillez renseigner l'adresse d'utilisateur");
-		   }
-		/*
-		 * if (!StringUtils.hasLength(utilisateurDTO.getEmail())) {
-		 * errors.add("Veuillez renseigner l'adresse emal d'utilisateur"); }
-		 */
+		  	errors.addAll(AdresseValidator.validate(utilisateurDTO.getAdresse()));
+
 		    return errors;
-		  }
+	  }
 	
 }

@@ -16,58 +16,51 @@ import lombok.Data;
 @Data
 public class CommandeFournisseurDTO {
 
-	  private Integer id;
+	private Integer id;
 
-	  private String code;
+	private String code;
 
-	  private Instant dateCommande;
+	private Instant dateCommande;
 
-	  private EtatCommande etatCommande;
+	private EtatCommande etatCommande;
 
-	  private FournisseurDTO fournisseur;
+	private FournisseurDTO fournisseur;
 
-	  private Integer idEntreprise;
+	private Integer idEntreprise;
 
-	  private List<LigneCommandeFournisseurDTO> ligneCommandeFournisseurs;
-	
-	  
-	  
+	private List<LigneCommandeFournisseurDTO> ligneCommandeFournisseurs;
 
-	  public static CommandeFournisseurDTO fromEntity(CommandeFournisseur commandeFournisseur) {
-	    if (commandeFournisseur == null) {
-	      return null;
-	    }
-	    return CommandeFournisseurDTO.builder()
-	        .id(commandeFournisseur.getId())
-	        .code(commandeFournisseur.getCodeCommande())
-	        .dateCommande(commandeFournisseur.getDate())
-	        .fournisseur(FournisseurDTO.fromEntity(commandeFournisseur.getFournisseur()))
-	        .etatCommande(commandeFournisseur.getEtatCommande())
-	        .idEntreprise(commandeFournisseur.getIdEntreprise())
-	        .build();
-	  }
+	public static CommandeFournisseurDTO fromEntity(CommandeFournisseur commandeFournisseur) {
+		if (commandeFournisseur == null) {
+			return null;
+		}
+		return CommandeFournisseurDTO.builder()
+				.id(commandeFournisseur.getId())
+				.code(commandeFournisseur.getCode())
+				.dateCommande(commandeFournisseur.getDateCommande())
+				.fournisseur(FournisseurDTO.fromEntity(commandeFournisseur.getFournisseur()))
+				.etatCommande(commandeFournisseur.getEtatCommande())
+				.idEntreprise(commandeFournisseur.getIdEntreprise())
+				.build();
+	}
 
-	  public static CommandeFournisseur toEntity(CommandeFournisseurDTO commandeFournisseurDTO) {
-	    if (commandeFournisseurDTO == null) {
-	      return null;
-	    }
-	    CommandeFournisseur commandeFournisseur = new CommandeFournisseur();
-	    commandeFournisseur.setId(commandeFournisseurDTO.getId());
-	    commandeFournisseur.setCodeCommande(commandeFournisseurDTO.getCode());
-	    commandeFournisseur.setDate(commandeFournisseurDTO.getDateCommande());
-	    commandeFournisseur.setFournisseur(FournisseurDTO.toEntity(commandeFournisseurDTO.getFournisseur()));
-	    commandeFournisseur.setIdEntreprise(commandeFournisseurDTO.getIdEntreprise());
-	    commandeFournisseur.setEtatCommande(commandeFournisseurDTO.getEtatCommande());
-	    return commandeFournisseur;
-	  }
-	  
-	  
-	  
-	  public boolean isCommandeLivree() {
+	public static CommandeFournisseur toEntity(CommandeFournisseurDTO dto) {
+		if (dto == null) {
+			return null;
+		}
+		CommandeFournisseur commandeFournisseur = new CommandeFournisseur();
+		commandeFournisseur.setId(dto.getId());
+		commandeFournisseur.setCode(dto.getCode());
+		commandeFournisseur.setDateCommande(dto.getDateCommande());
+		commandeFournisseur.setFournisseur(FournisseurDTO.toEntity(dto.getFournisseur()));
+		commandeFournisseur.setIdEntreprise(dto.getIdEntreprise());
+		commandeFournisseur.setEtatCommande(dto.getEtatCommande());
+		return commandeFournisseur;
+	}
 
-		  return EtatCommande.LIVREE.equals(this.etatCommande);
-
-	  }
+	public boolean isCommandeLivree() {
+		return EtatCommande.LIVREE.equals(this.etatCommande);
+	}
 	  
 	  
 }

@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,16 +19,17 @@ import java.util.List;
 public class CommandeFournisseur extends AbstractEntity{
 
 
-    @Column(name ="codeCommande")
-    private String codeCommande;
-    @Column(name ="date")
-    private Instant date;
+    @Column(name = "code")
+    private String code;
+
+    @Column(name = "datecommande")
+    private Instant dateCommande;
 
     @Column(name = "etatcommande")
     @Enumerated(EnumType.STRING)
     private EtatCommande etatCommande;
 
-    @Column(name ="idEntreprise")
+    @Column(name = "identreprise")
     private Integer idEntreprise;
 
     @ManyToOne
@@ -37,4 +38,5 @@ public class CommandeFournisseur extends AbstractEntity{
 
     @OneToMany(mappedBy = "commandeFournisseur")
     private List<LigneCommandeFournisseur> ligneCommandeFournisseurs;
+
 }

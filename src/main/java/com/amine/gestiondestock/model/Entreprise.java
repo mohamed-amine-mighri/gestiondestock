@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,22 +19,30 @@ import java.util.List;
 public class Entreprise extends AbstractEntity{
 
 
-    @Column(name ="nom")
+    @Column(name = "nom")
     private String nom;
-    @Column(name ="description")
-    private String description;
-    @Column(name ="adresse")
-    private String adresse;
-    @Column(name ="photo")
-    private String photo;
-    @Column(name ="email")
-    private String email;
-    @Column(name ="numtelephone")
-    private String numTelephone;
-    @Column(name ="siteWeb")
-    private String siteWeb;
 
-    // we must add the use in here using the joinColumn(mappedBy) entreprise to the List of users//
+    @Column(name = "description")
+    private String description;
+
+    @Embedded
+    private Adresse adresse;
+
+    @Column(name = "codefiscal")
+    private String codeFiscal;
+
+    @Column(name = "photo")
+    private String photo;
+
+    @Column(name = "email")
+    private String email;
+
+    @Column(name = "numtel")
+    private String numTel;
+
+    @Column(name = "siteweb")
+    private String steWeb;
+
     @OneToMany(mappedBy = "entreprise")
     private List<Utilisateur> utilisateurs;
 

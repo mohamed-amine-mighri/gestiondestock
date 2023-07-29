@@ -15,57 +15,63 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class EntrepriseDTO {
 
-	  private Integer id;
 
-	  private String nom;
+	private Integer id;
 
-	  private String description;
+	private String nom;
 
-	  private String adresse;
+	private String description;
 
-	  private String photo;
+	private AdresseDto adresse;
 
-	  private String email;
+	private String codeFiscal;
 
-	  private String numtelephone;
+	private String photo;
 
-	  private String siteWeb;
+	private String email;
 
-	  @JsonIgnore
-	  private List<UtilisateurDTO> utilisateurs;
-	
-	  public static EntrepriseDTO fromEntity(Entreprise entreprise) {
-	    if (entreprise == null) {
-	      return null;
-	    }
-	    return EntrepriseDTO.builder()
-	        .id(entreprise.getId())
-	        .nom(entreprise.getNom())
-	        .description(entreprise.getDescription())
-	        .adresse(entreprise.getAdresse())
-	        .photo(entreprise.getPhoto())
-	        .email(entreprise.getEmail())
-	        .numtelephone(entreprise.getNumTelephone())
-	        .siteWeb(entreprise.getSiteWeb())
-	        .build();
-	  }
+	private String numTel;
 
-	  public static Entreprise toEntity(EntrepriseDTO entrepriseDTO) {
-		  log.error("the boj",entrepriseDTO);
-	    if (entrepriseDTO == null) {
-	      return null;
-	    }
-	    Entreprise entreprise = new Entreprise();
-	    entreprise.setId(entrepriseDTO.getId());
-	    entreprise.setNom(entrepriseDTO.getNom());
-	    entreprise.setDescription(entrepriseDTO.getDescription());
-	    entreprise.setAdresse(entrepriseDTO.getAdresse());
-	    entreprise.setPhoto(entrepriseDTO.getPhoto());
-	    entreprise.setEmail(entrepriseDTO.getEmail());
-	    entreprise.setNumTelephone(entrepriseDTO.getNumtelephone());
-	    entreprise.setSiteWeb(entrepriseDTO.getSiteWeb());
-	    
-	    return entreprise;
-	  }
+	private String steWeb;
+
+
+	@JsonIgnore
+	private List<UtilisateurDTO> utilisateurs;
+
+	public static EntrepriseDTO fromEntity(Entreprise entreprise) {
+		if (entreprise == null) {
+			return null;
+		}
+		return EntrepriseDTO.builder()
+				.id(entreprise.getId())
+				.nom(entreprise.getNom())
+				.description(entreprise.getDescription())
+				.adresse(AdresseDto.fromEntity(entreprise.getAdresse()))
+				.codeFiscal(entreprise.getCodeFiscal())
+				.photo(entreprise.getPhoto())
+				.email(entreprise.getEmail())
+				.numTel(entreprise.getNumTel())
+				.steWeb(entreprise.getSteWeb())
+				.build();
+	}
+
+	public static Entreprise toEntity(EntrepriseDTO dto) {
+		if (dto == null) {
+			return null;
+		}
+		Entreprise entreprise = new Entreprise();
+		entreprise.setId(dto.getId());
+		entreprise.setNom(dto.getNom());
+		entreprise.setDescription(dto.getDescription());
+		entreprise.setAdresse(AdresseDto.toEntity(dto.getAdresse()));
+		entreprise.setCodeFiscal(dto.getCodeFiscal());
+		entreprise.setPhoto(dto.getPhoto());
+		entreprise.setEmail(dto.getEmail());
+		entreprise.setNumTel(dto.getNumTel());
+		entreprise.setSteWeb(dto.getSteWeb());
+
+		return entreprise;
+	}
+
 	  
 }

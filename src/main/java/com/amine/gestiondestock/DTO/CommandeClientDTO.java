@@ -15,56 +15,50 @@ import lombok.Data;
 @Builder
 public class CommandeClientDTO {
 
-	  private Integer id;
+	private Integer id;
 
-	  private String code;
+	private String code;
 
-	  private Instant dateCommande;
+	private Instant dateCommande;
 
-	  private EtatCommande etatCommande;
+	private EtatCommande etatCommande;
 
-	  private ClientDTO client;
+	private ClientDTO client;
 
-	  private Integer idEntreprise;
+	private Integer idEntreprise;
 
-	  private List<LigneCommandeClientDTO> ligneCommandeClients;
+	private List<LigneCommandeClientDTO> ligneCommandeClients;
 
-	  
-	  public static CommandeClientDTO fromEntity(CommandeClient commandeClient) {
-		    if (commandeClient == null) {
-		      return null;
-		    }
-		    return CommandeClientDTO.builder()
-		        .id(commandeClient.getId())
-		        .code(commandeClient.getCodeCommande())
-		        .dateCommande(commandeClient.getDate())
-		        .etatCommande(commandeClient.getEtatCommande())
-		        .client(ClientDTO.fromEntity(commandeClient.getClient()))
-		        .idEntreprise(commandeClient.getIdEntreprise())
-		        .build();
-		  }
-	 
-	  // CommandeClient --> CommandeClientDTO
-	  
-	  public static CommandeClient toEntity(CommandeClientDTO commandeClientDTO) {
-	    if (commandeClientDTO == null) {
-	      return null;
-	    }
-	    CommandeClient commandeClient = new CommandeClient();
-	    commandeClient.setId(commandeClientDTO.getId());
-	    commandeClient.setCodeCommande(commandeClientDTO.getCode());
-	    commandeClient.setDate(commandeClientDTO.getDateCommande());
-	    commandeClient.setEtatCommande(commandeClientDTO.getEtatCommande());
-	    commandeClient.setClient(ClientDTO.toEntity(commandeClientDTO.getClient()));
-	    commandeClient.setIdEntreprise(commandeClientDTO.getIdEntreprise());
-	    return commandeClient;
-	  }
-	  
-	  public boolean isCommandeLivree() {
+	public static CommandeClientDTO fromEntity(CommandeClient commandeClient) {
+		if (commandeClient == null) {
+			return null;
+		}
+		return CommandeClientDTO.builder()
+				.id(commandeClient.getId())
+				.code(commandeClient.getCode())
+				.dateCommande(commandeClient.getDateCommande())
+				.etatCommande(commandeClient.getEtatCommande())
+				.client(ClientDTO.fromEntity(commandeClient.getClient()))
+				.idEntreprise(commandeClient.getIdEntreprise())
+				.build();
 
-		  return EtatCommande.LIVREE.equals(this.etatCommande);
+	}
 
-	  }
-	 
-	  
+	public static CommandeClient toEntity(CommandeClientDTO dto) {
+		if (dto == null) {
+			return null;
+		}
+		CommandeClient commandeClient = new CommandeClient();
+		commandeClient.setId(dto.getId());
+		commandeClient.setCode(dto.getCode());
+		commandeClient.setClient(ClientDTO.toEntity(dto.getClient()));
+		commandeClient.setDateCommande(dto.getDateCommande());
+		commandeClient.setEtatCommande(dto.getEtatCommande());
+		commandeClient.setIdEntreprise(dto.getIdEntreprise());
+		return commandeClient;
+	}
+
+	public boolean isCommandeLivree() {
+		return EtatCommande.LIVREE.equals(this.etatCommande);
+	}
 }

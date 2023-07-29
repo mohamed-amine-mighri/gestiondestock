@@ -74,7 +74,7 @@ public class CathegorieServImpl implements CathegorieServ {
 	      log.error("Category ID is null");
 	      return;
 	    }
-	    List<Article> articles = articleRep.findAllById(id);
+	    List<Article> articles = articleRep.findAllByCategoryId(id);
 	    if (!articles.isEmpty()) {
 	      log.error("Impossible de supprimer cette categorie qui est deja utilise");
 	    }

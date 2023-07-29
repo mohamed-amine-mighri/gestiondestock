@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface CategoryRepos extends JpaRepository<Category, Integer> {
 
-    Optional<Category> findCategoryByCodeCategorie(String code);
+    Optional<Category> findCategoryByCode(String code);
 
 }

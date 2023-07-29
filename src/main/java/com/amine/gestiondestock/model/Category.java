@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,16 +18,15 @@ import java.util.List;
 @Table(name = "category")
 public class Category extends AbstractEntity{
 
-    /* we have to mappBy cathegory the list of articles using OneToMany tag */
-    @OneToMany(mappedBy="category")
-    private List<Article> article;
+    @Column(name = "code")
+    private String code;
 
-    @Column(name ="codeCategorie")
-    private String codeCategorie;
+    @Column(name = "designation")
+    private String designation;
 
-    @Column(name ="nom")
-    private String nom;
-
-    @Column(name ="idEntreprise")
+    @Column(name = "identreprise")
     private Integer idEntreprise;
+
+    @OneToMany(mappedBy = "category")
+    private List<Article> articles;
 }

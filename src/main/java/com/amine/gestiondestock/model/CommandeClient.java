@@ -1,7 +1,7 @@
 package com.amine.gestiondestock.model;
 
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,23 +17,24 @@ import java.util.List;
 @Table(name="commandeClient")
 public class CommandeClient extends AbstractEntity{
 
+    @Column(name = "code")
+    private String code;
 
-    @Column(name ="codeCommande")
-    private String codeCommande;
-    @Column(name ="date")
-    private Instant date;
+    @Column(name = "datecommande")
+    private Instant dateCommande;
+
     @Column(name = "etatcommande")
     @Enumerated(EnumType.STRING)
     private EtatCommande etatCommande;
 
-    @Column(name ="idEntreprise")
+    @Column(name = "identreprise")
     private Integer idEntreprise;
 
     @ManyToOne
-    @JoinColumn(name ="idClient")
+    @JoinColumn(name = "idclient")
     private Client client;
 
-    @OneToMany(mappedBy="commandeClient")
-    private List<LigneCommandeClient> ligneCommandeClient;
+    @OneToMany(mappedBy = "commandeClient")
+    private List<LigneCommandeClient> ligneCommandeClients;
 
 }

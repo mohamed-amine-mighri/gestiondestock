@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 public class Roles extends AbstractEntity{
 
 
-    @Column(name="roleName")
+
+    @Column(name = "rolename")
     private String roleName;
 
-
     @ManyToOne
-    @JoinColumn(name="idUtilisateur")
+    @JoinColumn(name = "idutilisateur")
     private Utilisateur utilisateur;
 
 }

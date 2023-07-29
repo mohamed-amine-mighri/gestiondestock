@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -15,19 +15,24 @@ import java.time.Instant;
 @Table(name="MvtStk")
 public class MvtStk extends AbstractEntity{
 
+    @Column(name = "datemvt")
+    private Instant dateMvt;
 
-    @Column(name ="date")
-    private Instant date;
-    @Column(name ="quantite")
+    @Column(name = "quantite")
     private BigDecimal quantite;
-
-    @Column(name = "type")
-    @Enumerated(EnumType.STRING)
-    private TypeMouvement type;
-    @Column(name ="idEntreprise")
-    private Integer idEntreprise;
 
     @ManyToOne
     @JoinColumn(name = "idarticle")
     private Article article;
+
+    @Column(name = "typemvt")
+    @Enumerated(EnumType.STRING)
+    private TypeMouvement typeMvt;
+
+    @Column(name = "sourcemvt")
+    @Enumerated(EnumType.STRING)
+    private SourceMouvement sourceMvt;
+
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
 }

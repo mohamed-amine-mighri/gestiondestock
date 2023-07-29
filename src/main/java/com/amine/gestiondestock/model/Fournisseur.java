@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,23 +18,28 @@ import java.util.List;
 @Table(name="fournisseur")
 public class Fournisseur extends AbstractEntity{
 
-    @Column(name ="nom")
+    @Column(name = "nom")
     private String nom;
-    @Column(name ="prenom")
-    private String prenom;
-    @Column(name ="photo")
-    private String photo;
-    @Column(name ="email")
-    private String email;
-    @Column(name ="adresse")
-    private String adresse;
-    @Column(name ="numtelephone")
-    private String numTelephone;
-    @Column(name ="idEntreprise")
-    private Integer idEntreprise;
 
-    //we need to join the fournisseur withe the cammandeFournisseur using oneToMany and mappedBy//
+    @Column(name = "prenom")
+    private String prenom;
+
+    @Embedded
+    private Adresse adresse;
+
+    @Column(name = "photo")
+    private String photo;
+
+    @Column(name = "mail")
+    private String mail;
+
+    @Column(name = "numTel")
+    private String numTel;
+
+    @Column(name = "identreprise")
+    private Integer idEntreprise;
 
     @OneToMany(mappedBy = "fournisseur")
     private List<CommandeFournisseur> commandeFournisseurs;
+
 }

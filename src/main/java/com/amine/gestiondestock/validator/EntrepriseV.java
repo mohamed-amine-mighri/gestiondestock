@@ -30,14 +30,11 @@ public class EntrepriseV {
 		    if (!StringUtils.hasLength(entrepriseDTO.getEmail())) {
 		      errors.add("Veuillez reseigner l'email de l'entreprise");
 		    }
-		    if (!StringUtils.hasLength(entrepriseDTO.getNumtelephone())) {
+		    if (!StringUtils.hasLength(entrepriseDTO.getNumTel())) {
 		      errors.add("Veuillez reseigner le numero de telephone de l'entreprise");
 		    }
-
-		    if (!StringUtils.hasLength(entrepriseDTO.getAdresse())) {
-			  errors.add("Veuillez reseigner l'adresse de l'entreprise");
-			}
+		  	errors.addAll(AdresseValidator.validate(entrepriseDTO.getAdresse()));
 		    return errors;
-		  }
+	  }
 	
 }

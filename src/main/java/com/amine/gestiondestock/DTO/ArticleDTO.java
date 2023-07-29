@@ -14,53 +14,55 @@ import lombok.Data;
 @Data
 public class ArticleDTO {
 
-	
-	  private Integer id;
+	private Integer id;
 
-	  private String codeArticle;
+	private String codeArticle;
 
-	  private String nom;
+	private String designation;
 
-	  private BigDecimal prix;
+	private BigDecimal prixUnitaireHt;
 
-	  private String photo;
+	private BigDecimal tauxTva;
 
-	  private CategorieDTO category;
+	private BigDecimal prixUnitaireTtc;
 
-	  private Entreprise idEntreprise;
-	
-	  // Article ---> ArticleDTO
-	  
-	  public static ArticleDTO fromEntity(Article article) {
-		    if (article == null) {
-		      return null;
-		    }
-		    return ArticleDTO.builder()
-					.id(article.getId())
-					.codeArticle(article.getCodeArticle())
-					.nom(article.getNom())
-					.photo(article.getPhoto())
-					.prix(article.getPrix())
-					.idEntreprise(article.getEntreprise())
-					.category(CategorieDTO.fromEntity(article.getCategory()))
-					.build();
-	  	}
+	private String photo;
 
-	  // ArticleDTO --> Article
-	  
-		  public static Article toEntity(ArticleDTO articleDto) {
-		    if (articleDto == null) {
-		      return null;
-		    }
-		    Article article = new Article();
-		    article.setId(articleDto.getId());
-		    article.setCodeArticle(articleDto.getCodeArticle());
-		    article.setNom(articleDto.getNom());
-		    article.setPhoto(articleDto.getPhoto());
-		    article.setPrix(articleDto.getPrix());
-		    article.setEntreprise(articleDto.getIdEntreprise());
-		    article.setCategory(CategorieDTO.toEntity(articleDto.getCategory()));
-		    return article;
-		  }
-	
+	private CategorieDTO category;
+
+	private Integer idEntreprise;
+
+	public static ArticleDTO fromEntity(Article article) {
+		if (article == null) {
+			return null;
+		}
+		return ArticleDTO.builder()
+				.id(article.getId())
+				.codeArticle(article.getCodeArticle())
+				.designation(article.getDesignation())
+				.photo(article.getPhoto())
+				.prixUnitaireHt(article.getPrixUnitaireHt())
+				.prixUnitaireTtc(article.getPrixUnitaireTtc())
+				.tauxTva(article.getTauxTva())
+				.idEntreprise(article.getIdEntreprise())
+				.category(CategorieDTO.fromEntity(article.getCategory()))
+				.build();
+	}
+
+	public static Article toEntity(ArticleDTO articleDto) {
+		if (articleDto == null) {
+			return null;
+		}
+		Article article = new Article();
+		article.setId(articleDto.getId());
+		article.setCodeArticle(articleDto.getCodeArticle());
+		article.setDesignation(articleDto.getDesignation());
+		article.setPhoto(articleDto.getPhoto());
+		article.setPrixUnitaireHt(articleDto.getPrixUnitaireHt());
+		article.setPrixUnitaireTtc(articleDto.getPrixUnitaireTtc());
+		article.setTauxTva(articleDto.getTauxTva());
+		article.setIdEntreprise(articleDto.getIdEntreprise());
+		article.setCategory(CategorieDTO.toEntity(articleDto.getCategory()));
+		return article;
+	}
 }

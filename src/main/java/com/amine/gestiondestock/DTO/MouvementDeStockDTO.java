@@ -37,10 +37,10 @@ public class MouvementDeStockDTO {
 
 		    return MouvementDeStockDTO.builder()
 		        .id(mouvementDeStock.getId())
-		        .date(mouvementDeStock.getDate())
+		        .date(mouvementDeStock.getDateMvt())
 		        .quantite(mouvementDeStock.getQuantite())
 		        .article(ArticleDTO.fromEntity(mouvementDeStock.getArticle()))
-		        .type(mouvementDeStock.getType())
+		        .type(mouvementDeStock.getTypeMvt())
 		        .idEntreprise(mouvementDeStock.getIdEntreprise())
 		        .build();
 		  }
@@ -52,10 +52,10 @@ public class MouvementDeStockDTO {
 
 		    MvtStk mouvementDeStock = new MvtStk();
 		    mouvementDeStock.setId(mouvementDeStockDTO.getId());
-		    mouvementDeStock.setDate(mouvementDeStockDTO.getDate());
+		    mouvementDeStock.setDateMvt(mouvementDeStockDTO.getDate());
 		    mouvementDeStock.setQuantite(mouvementDeStockDTO.getQuantite());
 		    mouvementDeStock.setArticle(ArticleDTO.toEntity(mouvementDeStockDTO.getArticle()));
-		    mouvementDeStock.setType(mouvementDeStockDTO.getType());
+		    mouvementDeStock.setTypeMvt(mouvementDeStockDTO.getType());
 		    mouvementDeStock.setIdEntreprise(mouvementDeStockDTO.getIdEntreprise());
 		    return mouvementDeStock;
 		  }

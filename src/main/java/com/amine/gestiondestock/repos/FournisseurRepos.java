@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface FournisseurRepos extends JpaRepository<Fournisseur, Integer> {
 
-    Optional<Fournisseur> findFournisseurByEmail(String email);
+    //Optional<Fournisseur> findFournisseurByEmail(String email);
 }

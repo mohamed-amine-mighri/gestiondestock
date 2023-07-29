@@ -13,67 +13,66 @@ import lombok.Data;
 @Builder
 public class UtilisateurDTO {
 
-	  private Integer id;
+	private Integer id;
 
-	  private String nom;
+	private String nom;
 
-	  private String prenom;
+	private String prenom;
 
-	  private String email;
+	private String email;
 
-	  //private Instant dateDeNaissance;
+	private Instant dateDeNaissance;
 
-	  private String moteDePasse;
+	private String moteDePasse;
 
-	  private String adresse;
+	private AdresseDto adresse;
 
-	  private String photo;
+	private String photo;
 
-	  private EntrepriseDTO entreprise;
+	private EntrepriseDTO entreprise;
 
-	  private List<RoleDTO> roles;
-	
-	  public static UtilisateurDTO fromEntity(Utilisateur utilisateur) {
-		    if (utilisateur == null) {
-		      return null;
-		    }
+	private List<RoleDTO> roles;
 
-		    return UtilisateurDTO.builder()
-		        .id(utilisateur.getId())
-		        .nom(utilisateur.getNom())
-		        .prenom(utilisateur.getPrenom())
-		        .email(utilisateur.getEmail())
-		        .moteDePasse(utilisateur.getMoteDePasse())
-		        //.dateDeNaissance(utilisateur.get)
-		        .adresse(utilisateur.getAdresse())
-		        .photo(utilisateur.getPhoto())
-		        .entreprise(EntrepriseDTO.fromEntity(utilisateur.getEntreprise()))
-		        .roles(
-		            utilisateur.getRole() != null ?
-		                utilisateur.getRole().stream()
-		                    .map(RoleDTO::fromEntity)
-		                    .collect(Collectors.toList()) : null
-		        )
-		        .build();
-		  }
+	public static UtilisateurDTO fromEntity(Utilisateur utilisateur) {
+		if (utilisateur == null) {
+			return null;
+		}
 
-		  public static Utilisateur toEntity(UtilisateurDTO utilisateurDTO) {
-		    if (utilisateurDTO == null) {
-		      return null;
-		    }
+		return UtilisateurDTO.builder()
+				.id(utilisateur.getId())
+				.nom(utilisateur.getNom())
+				.prenom(utilisateur.getPrenom())
+				.email(utilisateur.getEmail())
+				.moteDePasse(utilisateur.getMoteDePasse())
+				.dateDeNaissance(utilisateur.getDateDeNaissance())
+				.adresse(AdresseDto.fromEntity(utilisateur.getAdresse()))
+				.photo(utilisateur.getPhoto())
+				.entreprise(EntrepriseDTO.fromEntity(utilisateur.getEntreprise()))
+				.roles(
+						utilisateur.getRoles() != null ?
+								utilisateur.getRoles().stream()
+										.map(RoleDTO::fromEntity)
+										.collect(Collectors.toList()) : null
+				)
+				.build();
+	}
 
-		    Utilisateur utilisateur = new Utilisateur();
-		    utilisateur.setId(utilisateurDTO.getId());
-		    utilisateur.setNom(utilisateurDTO.getNom());
-		    utilisateur.setPrenom(utilisateurDTO.getPrenom());
-		    utilisateur.setEmail(utilisateurDTO.getEmail());
-		    utilisateur.setMoteDePasse(utilisateurDTO.getMoteDePasse());
-		    //utilisateur.setDateDeNaissance(utilisateurDTO.getDateDeNaissance());
-		    utilisateur.setAdresse(utilisateurDTO.getAdresse());
-		    utilisateur.setPhoto(utilisateurDTO.getPhoto());
-		    utilisateur.setEntreprise(EntrepriseDTO.toEntity(utilisateurDTO.getEntreprise()));
+	public static Utilisateur toEntity(UtilisateurDTO dto) {
+		if (dto == null) {
+			return null;
+		}
 
-		    return utilisateur;
-		  }
-	  
+		Utilisateur utilisateur = new Utilisateur();
+		utilisateur.setId(dto.getId());
+		utilisateur.setNom(dto.getNom());
+		utilisateur.setPrenom(dto.getPrenom());
+		utilisateur.setEmail(dto.getEmail());
+		utilisateur.setMoteDePasse(dto.getMoteDePasse());
+		utilisateur.setDateDeNaissance(dto.getDateDeNaissance());
+		utilisateur.setAdresse(AdresseDto.toEntity(dto.getAdresse()));
+		utilisateur.setPhoto(dto.getPhoto());
+		utilisateur.setEntreprise(EntrepriseDTO.toEntity(dto.getEntreprise()));
+
+		return utilisateur;
+	}
 }

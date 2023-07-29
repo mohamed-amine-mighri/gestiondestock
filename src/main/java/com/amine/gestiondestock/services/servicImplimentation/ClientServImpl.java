@@ -6,6 +6,8 @@ import java.util.stream.Collectors;
 
 import com.amine.gestiondestock.DTO.ClientDTO;
 import com.amine.gestiondestock.Exception.EntityNotFoundException;
+import com.amine.gestiondestock.Exception.ErrorCodes;
+import com.amine.gestiondestock.Exception.InvalidEntityException;
 import com.amine.gestiondestock.model.CommandeClient;
 import com.amine.gestiondestock.repos.ClientRepos;
 import com.amine.gestiondestock.repos.CommandeClientRepos;
@@ -33,7 +35,7 @@ public class ClientServImpl implements ClientSev {
 		List<String> errors = ClientV.validate(dto);
 		if (!errors.isEmpty()) {
 		   log.error("Client is not valid {}", dto);
-		   //throw new InvalidEntityException("Le client n'est pas valide", ErrorCodes.CLIENT_NOT_VALID, errors);
+		   throw new InvalidEntityException("Le client n'est pas valide", ErrorCodes.CLIENT_NOT_VALID, errors);
 		}
 		return ClientDTO.fromEntity(
 	        clientRep.save(
@@ -53,7 +55,7 @@ public class ClientServImpl implements ClientSev {
 	        .map(ClientDTO::fromEntity)
 	        .orElseThrow(() -> new EntityNotFoundException(
 	            "Aucun Client avec l'ID = " + id + " n' ete trouve dans la BDD"
-	            )
+	            ,ErrorCodes.CLIENT_NOT_FOUND)
 	        );
 	  }
 	

@@ -1,6 +1,6 @@
 package com.amine.gestiondestock.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,26 +18,20 @@ import java.math.BigDecimal;
 public class LigneCommandeFournisseur extends AbstractEntity{
 
 
-    @Column(name ="idFournisseur")
-    private Integer idFournisseur;
-
     @ManyToOne
     @JoinColumn(name = "idarticle")
     private Article article;
 
-    //we have to joinColumn using ManyToOne idCommandeFournisseur to CommandeFournisseur
     @ManyToOne
     @JoinColumn(name = "idcommandefournisseur")
     private CommandeFournisseur commandeFournisseur;
 
-
-    @Column(name ="quantite")
+    @Column(name = "quantite")
     private BigDecimal quantite;
-    @Column(name ="prix")
-    private BigDecimal prix;
-    @Column(name ="idEntreprise")
+
+    @Column(name = "prixunitaire")
+    private BigDecimal prixUnitaire;
+
+    @Column(name = "identreprise")
     private Integer idEntreprise;
-
-
-
    }
