@@ -24,7 +24,6 @@ public class UtilisateurController implements UtilisateurApi {
     return utilisateurService.save(dto);
   }
 
-
   @Override
   public UtilisateurDTO findById(Integer id) {
     return utilisateurService.findById(id);

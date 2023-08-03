@@ -30,7 +30,7 @@ public class MouvementDeStockDTO {
 	  private Integer idEntreprise;
 	
 	  
-	  public static MouvementDeStockDTO fromEntity(MvtStk mouvementDeStock) {
+	  public static MouvementDeStockDTO  fromEntity(MvtStk mouvementDeStock) {
 		    if (mouvementDeStock == null) {
 		      return null;
 		    }
@@ -45,18 +45,18 @@ public class MouvementDeStockDTO {
 		        .build();
 		  }
 
-		  public static MvtStk toEntity(MouvementDeStockDTO mouvementDeStockDTO) {
-		    if (mouvementDeStockDTO == null) {
+		  public static MvtStk toEntity(MouvementDeStockDTO dto ) {
+		    if ( dto == null) {
 		      return null;
 		    }
 
 		    MvtStk mouvementDeStock = new MvtStk();
-		    mouvementDeStock.setId(mouvementDeStockDTO.getId());
-		    mouvementDeStock.setDateMvt(mouvementDeStockDTO.getDate());
-		    mouvementDeStock.setQuantite(mouvementDeStockDTO.getQuantite());
-		    mouvementDeStock.setArticle(ArticleDTO.toEntity(mouvementDeStockDTO.getArticle()));
-		    mouvementDeStock.setTypeMvt(mouvementDeStockDTO.getType());
-		    mouvementDeStock.setIdEntreprise(mouvementDeStockDTO.getIdEntreprise());
+		    mouvementDeStock.setId(dto.getId());
+		    mouvementDeStock.setDateMvt(dto.getDate());
+		    mouvementDeStock.setQuantite(dto.getQuantite());
+		    mouvementDeStock.setArticle(ArticleDTO.toEntity(dto.getArticle()));
+		    mouvementDeStock.setTypeMvt(dto.getType());
+		    mouvementDeStock.setIdEntreprise(dto.getIdEntreprise());
 		    return mouvementDeStock;
 		  }
 	  

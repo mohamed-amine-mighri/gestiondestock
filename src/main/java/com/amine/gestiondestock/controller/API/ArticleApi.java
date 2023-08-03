@@ -1,9 +1,7 @@
 package com.amine.gestiondestock.controller.API;
 
 import com.amine.gestiondestock.DTO.ArticleDTO;
-import com.amine.gestiondestock.DTO.LigneCommandeClientDTO;
-import com.amine.gestiondestock.DTO.LigneCommandeFournisseurDTO;
-import com.amine.gestiondestock.DTO.LigneVenteDTO;
+
 
 import io.swagger.annotations.Api;
 

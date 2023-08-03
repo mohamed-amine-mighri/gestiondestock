@@ -11,7 +11,6 @@ import com.amine.gestiondestock.repos.RolesRepository;
 import com.amine.gestiondestock.repos.UtilisateurRepos;
 import com.amine.gestiondestock.services.UtilisateurService;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -22,9 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import static java.rmi.server.LogStream.log;
-//import org.springframework.security.crypto.password.PasswordEncoder;
 
 
 @Service
@@ -116,6 +112,7 @@ public class UtilisateurServiceImpl implements UtilisateurService {
       return;
     }
     utilisateurRepository.deleteById(id);
+
   }
 
   @Override

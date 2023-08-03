@@ -19,10 +19,12 @@ spring:
       ddl-auto: update
       dialect: org.hibernate.dialect.MySQL5Dialect
 
-#application:
-#  security:
-#    jwt:
-#      secret-key: my-secret-key
+flickr:
+  apiKey: d64a92ac5d1527ec1ffbdffad053b8b0
+  apiSecret: 3a8c52a2d8c4afe2
+  appKey: 72157720889966587-f14f644fa37dd814
+  appSecret: 3055845ea9e0901e
+
 
 server:
   port: 8081

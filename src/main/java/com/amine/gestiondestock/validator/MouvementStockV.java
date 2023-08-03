@@ -10,9 +10,9 @@ import org.springframework.util.StringUtils;
 
 public class MouvementStockV {
 
-	  public static List<String> validate(MouvementDeStockDTO mouvementDeStockDTO) {
+	  public static List<String> validate(MouvementDeStockDTO dto ) {
 		    List<String> errors = new ArrayList<>();
-		    if (mouvementDeStockDTO == null) {
+		    if ( dto == null) {
 		      errors.add("Veuillez renseigner la date du mouvenent");
 		      errors.add("Veuillez renseigner la quantite du mouvenent");
 		      errors.add("Veuillez renseigner l'article");
@@ -20,16 +20,16 @@ public class MouvementStockV {
 		      
 		      return errors;
 		    }
-		    if (mouvementDeStockDTO.getDate() == null) {
+		    if (dto.getDate() == null) {
 		      errors.add("Veuillez renseigner la date du mouvenent");
 		    }
-		    if (mouvementDeStockDTO.getQuantite() == null || mouvementDeStockDTO.getQuantite().compareTo(BigDecimal.ZERO) == 0) {
+		    if (dto.getQuantite() == null || dto.getQuantite().compareTo(BigDecimal.ZERO) == 0) {
 		      errors.add("Veuillez renseigner la quantite du mouvenent");
 		    }
-		    if (mouvementDeStockDTO.getArticle() == null || mouvementDeStockDTO.getArticle().getId() == null) {
+		    if (dto.getArticle() == null || dto.getArticle().getId() == null) {
 		      errors.add("Veuillez renseigner l'article");
 		    }
-		    if (!StringUtils.hasLength(mouvementDeStockDTO.getType().name())) {
+		    if (!StringUtils.hasLength(dto.getType().name())) {
 		      errors.add("Veuillez renseigner le type du mouvement");
 		    }
 		    return errors;

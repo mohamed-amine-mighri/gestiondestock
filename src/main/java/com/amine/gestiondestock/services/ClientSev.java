@@ -9,7 +9,6 @@ public interface ClientSev {
 	ClientDTO save(ClientDTO dto);
 	ClientDTO findById(Integer id);
 	List<ClientDTO> findAll();
-	
 	void delete(Integer id);
 	
 }
