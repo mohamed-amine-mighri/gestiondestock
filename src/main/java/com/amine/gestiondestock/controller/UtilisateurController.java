@@ -3,6 +3,7 @@ package com.amine.gestiondestock.controller;
 
 import java.util.List;
 
+import com.amine.gestiondestock.DTO.ChangerMotDePasseUtilisateurDto;
 import com.amine.gestiondestock.DTO.UtilisateurDTO;
 import com.amine.gestiondestock.controller.API.UtilisateurApi;
 import com.amine.gestiondestock.services.UtilisateurService;
@@ -27,6 +28,11 @@ public class UtilisateurController implements UtilisateurApi {
   @Override
   public UtilisateurDTO findById(Integer id) {
     return utilisateurService.findById(id);
+  }
+
+  @Override
+  public UtilisateurDTO changerMotDePasse(ChangerMotDePasseUtilisateurDto dto) {
+    return utilisateurService.changerMotDePasse(dto);
   }
 
   @Override

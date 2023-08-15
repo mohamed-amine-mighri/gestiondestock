@@ -1,6 +1,7 @@
 package com.amine.gestiondestock.services;
 
 
+import com.amine.gestiondestock.DTO.ChangerMotDePasseUtilisateurDto;
 import com.amine.gestiondestock.DTO.UtilisateurDTO;
 
 import java.util.List;
@@ -17,7 +18,7 @@ public interface UtilisateurService {
 
   UtilisateurDTO findByEmail(String email);
 
-//  UtilisateurDTO changerMotDePasse(ChangerMotDePasseUtilisateurDto dto);
+  UtilisateurDTO changerMotDePasse(ChangerMotDePasseUtilisateurDto dto);
 
 
 }

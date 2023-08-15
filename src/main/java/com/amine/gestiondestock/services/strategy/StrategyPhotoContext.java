@@ -8,7 +8,6 @@ import lombok.Setter;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 @Service
 public class StrategyPhotoContext {
 
@@ -48,6 +47,5 @@ public class StrategyPhotoContext {
       default: throw new InvalidOperationException("Contexte inconnue pour l'enregistrement de la photo", ErrorCodes.UNKNOWN_CONTEXT);
     }
   }
-
 
 }

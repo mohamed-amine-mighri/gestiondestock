@@ -41,44 +41,45 @@ public class EntrepriseServiceImpl implements EntrepriseService {
   @Override
   public EntrepriseDTO save(EntrepriseDTO dto) {
     List<String> errors = EntrepriseV.validate(dto);
+    System.out.println("the entr ===========>"+dto.getAdresse());
     if (!errors.isEmpty()) {
       log.error("Entreprise is not valid {}", dto);
-      throw new InvalidEntityException("L'entreprise n'est pas valide", ErrorCodes.ENTREPRISE_NOT_VALID, errors);
+      //throw new InvalidEntityException("L'entreprise n'est pas valide", ErrorCodes.ENTREPRISE_NOT_VALID, errors);
     }
     EntrepriseDTO savedEntreprise = EntrepriseDTO.fromEntity(
-        entrepriseRepository.save(EntrepriseDTO.toEntity(dto))
+            entrepriseRepository.save(EntrepriseDTO.toEntity(dto))
     );
-//
-//    UtilisateurDTO utilisateur = fromEntreprise(savedEntreprise);
-//
-//    UtilisateurDTO savedUser = utilisateurService.save(utilisateur);
-//
-//    RoleDTO rolesDto = RoleDTO.builder()
-//        .roleName("ADMIN")
-//        .utilisateur(savedUser)
-//        .build();
-//
-//    rolesRepository.save(RoleDTO.toEntity(rolesDto));
+
+    UtilisateurDTO utilisateur = fromEntreprise(savedEntreprise);
+
+    UtilisateurDTO savedUser = utilisateurService.save(utilisateur);
+
+    RoleDTO rolesDto = RoleDTO.builder()
+            .roleName("ADMIN")
+            .utilisateur(savedUser)
+            .build();
+
+    rolesRepository.save(RoleDTO.toEntity(rolesDto));
 
     return  savedEntreprise;
   }
-//
-//  private UtilisateurDTO fromEntreprise(EntrepriseDTO dto) {
-//    return UtilisateurDTO.builder()
-//        .adresse(dto.getAdresse())
-//        .nom(dto.getNom())
-//        .email(dto.getEmail())
-//        .moteDePasse(generateRandomPassword())
-//        .entreprise(dto)
-//        .dateDeNaissance(Instant.now())
-//        .photo(dto.getPhoto())
-//        .build();
-//  }
-//
-//  private String generateRandomPassword() {
-//    return "som3R@nd0mP@$$word";
-//  }
 
+  private UtilisateurDTO fromEntreprise(EntrepriseDTO dto) {
+    return UtilisateurDTO.builder()
+            .adresse(dto.getAdresse())
+            .nom(dto.getNom())
+            .prenom(dto.getCodeFiscal())
+            .email(dto.getEmail())
+            .moteDePasse(generateRandomPassword())
+            .entreprise(dto)
+            .dateDeNaissance(Instant.now())
+            .photo(dto.getPhoto())
+            .build();
+  }
+
+  private String generateRandomPassword() {
+    return "som3R@nd0mP@$$word";
+  }
   @Override
   public EntrepriseDTO findById(Integer id) {
     if (id == null) {

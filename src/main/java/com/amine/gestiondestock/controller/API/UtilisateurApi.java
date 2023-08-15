@@ -6,6 +6,7 @@ import static com.amine.gestiondestock.utils.Constants.UTILISATEUR_ENDPOINT;
 
 import java.util.List;
 
+import com.amine.gestiondestock.DTO.ChangerMotDePasseUtilisateurDto;
 import com.amine.gestiondestock.DTO.UtilisateurDTO;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,10 @@ public interface UtilisateurApi {
 
   @GetMapping(UTILISATEUR_ENDPOINT + "/{idUtilisateur}")
   UtilisateurDTO findById(@PathVariable("idUtilisateur") Integer id);
+
+
+  @PostMapping(UTILISATEUR_ENDPOINT + "/update/password")
+  UtilisateurDTO changerMotDePasse(@RequestBody ChangerMotDePasseUtilisateurDto dto);
 
   @GetMapping(UTILISATEUR_ENDPOINT + "/find/{email}")
   UtilisateurDTO findByEmail(@PathVariable("email") String email);
