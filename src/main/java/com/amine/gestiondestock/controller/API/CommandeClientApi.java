@@ -20,39 +20,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 public interface CommandeClientApi {
 
 
-  @PostMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/create")
+  @PostMapping(COMMANDECLIENT_ENDPOINT + "/create")
   ResponseEntity<CommandeClientDTO> save(@RequestBody CommandeClientDTO dto);
 
-  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/update/etat/{idCommande}/{etatCommande}")
+  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/update/etat/{idCommande}/{etatCommande}")
   ResponseEntity<CommandeClientDTO> updateEtatCommande(@PathVariable("idCommande") Integer idCommande, @PathVariable("etatCommande") EtatCommande etatCommande);
 
-  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/update/quantite/{idCommande}/{idLigneCommande}/{quantite}")
+  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/update/quantite/{idCommande}/{idLigneCommande}/{quantite}")
   ResponseEntity<CommandeClientDTO> updateQuantiteCommande(@PathVariable("idCommande") Integer idCommande,
       @PathVariable("idLigneCommande") Integer idLigneCommande, @PathVariable("quantite") BigDecimal quantite);
 
-  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/update/client/{idCommande}/{idClient}")
+  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/update/client/{idCommande}/{idClient}")
   ResponseEntity<CommandeClientDTO> updateClient(@PathVariable("idCommande") Integer idCommande, @PathVariable("idClient") Integer idClient);
 
-  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/update/article/{idCommande}/{idLigneCommande}/{idArticle}")
+  @PatchMapping(COMMANDECLIENT_ENDPOINT + "/update/article/{idCommande}/{idLigneCommande}/{idArticle}")
   ResponseEntity<CommandeClientDTO> updateArticle(@PathVariable("idCommande") Integer idCommande,
       @PathVariable("idLigneCommande") Integer idLigneCommande, @PathVariable("idArticle") Integer idArticle);
 
-  @DeleteMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/delete/article/{idCommande}/{idLigneCommande}")
+  @DeleteMapping(COMMANDECLIENT_ENDPOINT + "/delete/article/{idCommande}/{idLigneCommande}")
   ResponseEntity<CommandeClientDTO> deleteArticle(@PathVariable("idCommande") Integer idCommande, @PathVariable("idLigneCommande") Integer idLigneCommande);
 
-  @GetMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/{idCommandeClient}")
+  @GetMapping(COMMANDECLIENT_ENDPOINT + "/{idCommandeClient}")
   ResponseEntity<CommandeClientDTO> findById(@PathVariable Integer idCommandeClient);
 
-  @GetMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/filter/{codeCommandeClient}")
+  @GetMapping(COMMANDECLIENT_ENDPOINT + "/filter/{codeCommandeClient}")
   ResponseEntity<CommandeClientDTO> findByCode(@PathVariable("codeCommandeClient") String code);
 
-  @GetMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/all")
+  @GetMapping(COMMANDECLIENT_ENDPOINT + "/all")
   ResponseEntity<List<CommandeClientDTO>> findAll();
 
-  @GetMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/lignesCommande/{idCommande}")
+  @GetMapping(COMMANDECLIENT_ENDPOINT + "/lignesCommande/{idCommande}")
   ResponseEntity<List<LigneCommandeClientDTO>> findAllLignesCommandesClientByCommandeClientId(@PathVariable("idCommande") Integer idCommande);
 
-  @DeleteMapping(COMMANDECLIENT_ENDPOINT + "/commandesclients/delete/{idCommandeClient}")
+  @DeleteMapping(COMMANDECLIENT_ENDPOINT + "/delete/{idCommandeClient}")
   ResponseEntity<Void> delete(@PathVariable("idCommandeClient") Integer id);
 
 }

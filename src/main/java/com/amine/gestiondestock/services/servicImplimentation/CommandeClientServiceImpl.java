@@ -55,7 +55,7 @@ public class CommandeClientServiceImpl implements CommandeClientService {
 
     if (!errors.isEmpty()) {
       log.error("Commande client n'est pas valide");
-      throw new InvalidEntityException("La commande client n'est pas valide", ErrorCodes.COMMANDE_CLIENT_NOT_VALID, errors);
+      //throw new InvalidEntityException("La commande client n'est pas valide", ErrorCodes.COMMANDE_CLIENT_NOT_VALID, errors);
     }
 
     if (dto.getId() != null && dto.isCommandeLivree()) {
